@@ -2,7 +2,7 @@
     --dark: #0F1722;
     --bg: #B3C9E0;
     --button-color: #6CA0CB;
-    --button-hover-color: #2E5173;
+    --button-hover-color: #b1b5e9;
 }
 
 
@@ -86,7 +86,8 @@ input[type="number"] {
     height: 3rem;
     font-size: 1.5rem;
     margin: 0.5rem;
-    background-color: var(--button-color)
+    background-color: var(--button-color);
+    border-radius: 0.5rem;
 }
 
 .operation_button{
