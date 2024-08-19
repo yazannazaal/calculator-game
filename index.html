@@ -13,73 +13,92 @@
         <main id="main_container">
             <section id="calculator_main">
                 <section class="display_container">
-                    <input class="display" id="result_display" type="number" ></input>
-                    <input class="display" id="operation_display" type="" disabled>
+                    <div class="result_display_container">
+                        <button class="display_button" id="back" type="button">⬅️</button>
+                        <input class="display" id="result_display" type="number" ></input>
+                    </div>
+                    <div class="operation_display_container">
+                        <input class="display" id="operation_display" type="" disabled>
+                    </div>
                 </section>
                 <section class="number_pad">
-                    <section class="number_inputs">
-                        <div class="row_one">
-                            <button class="number_button" id="n7" type="button">
-                                7
-                            </button>
-                            <button class="number_button" id="n8" type="button">
-                                8
-                            </button>
-                            <button class="number_button" id="n9" type="button">
-                                9
-                            </button>
-                        </div>
-                        <div class="row_two">
-                            <button class="number_button" id="n4" type="button">
-                                4
-                            </button>
-                            <button class="number_button" id="n5" type="button">
-                                5
-                            </button>
-                            <button class="number_button" id="n6" type="button">
-                                6
-                            </button>
-                        </div>
-                        <div class="row_three">
-                            <button class="number_button" id="n1" type="button">
-                                1
-                            </button>
-                            <button class="number_button" id="n2" type="button">
-                                2
-                            </button>
-                            <button class="number_button" id="n3" type="button">
-                                3
-                            </button>
-                        </div>
-                        <div class="row_four">
-                            <button class="number_button" id="n0" type="button">
-                                0
-                            </button>
-                            <button class="number_button" id="n." type="button">
-                                .
-                            </button>
-                        </div>
-                    </section>
-                    <section class="operation_inputs">
-                        <button class="operation_button" id="multiply" type="button">
-                            *
+                    <section class="memory_controls">
+                        <button class="operation_button" id="MR" type="button">
+                            MR
                         </button>
-                        <button class="operation_button" id="divide" type="button">
-                            /
+                        <button class="operation_button" id="M+" type="button">
+                            M+
                         </button> 
-                        <button class="operation_button" id="add" type="button">
-                            +
+                        <button class="operation_button" id="M-" type="button">
+                            M-
                         </button>
-                        <button class="operation_button" id="subtract" type="button">
-                            -
+                        <button class="operation_button" id="CA" type="button">
+                            CA
                         </button>
-                        <button class="operation_button" id="equals" type="button">
-                            =
-                        </button>
-                        
                     </section>
-                </section>
-                
+                    <div class="lower_pad">
+                        <section class="number_inputs">
+                            <div class="row_one number_row">
+                                <button class="number_button" id="n7" type="button">
+                                    7
+                                </button>
+                                <button class="number_button" id="n8" type="button">
+                                    8
+                                </button>
+                                <button class="number_button" id="n9" type="button">
+                                    9
+                                </button>
+                            </div>
+                            <div class="row_two number_row">
+                                <button class="number_button" id="n4" type="button">
+                                    4
+                                </button>
+                                <button class="number_button" id="n5" type="button">
+                                    5
+                                </button>
+                                <button class="number_button" id="n6" type="button">
+                                    6
+                                </button>
+                            </div>
+                            <div class="row_three number_row">
+                                <button class="number_button" id="n1" type="button">
+                                    1
+                                </button>
+                                <button class="number_button" id="n2" type="button">
+                                    2
+                                </button>
+                                <button class="number_button" id="n3" type="button">
+                                    3
+                                </button>
+                            </div>
+                            <div class="row_four number_row">
+                                <button class="number_button" id="n0" type="button">
+                                    0
+                                </button>
+                                <button class="number_button" id="n." type="button">
+                                    .
+                                </button>
+                            </div>
+                        </section>
+                        <section class="operation_inputs">
+                            <button class="operation_button" id="multiply" type="button">
+                                *
+                            </button>
+                            <button class="operation_button" id="divide" type="button">
+                                /
+                            </button> 
+                            <button class="operation_button" id="add" type="button">
+                                +
+                            </button>
+                            <button class="operation_button" id="subtract" type="button">
+                                -
+                            </button>
+                            <button class="operation_button" id="equals" type="button">
+                                =
+                            </button>    
+                        </section>
+                    </section>
+                </div> 
             </section>
         </main>
 
