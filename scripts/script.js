@@ -29,9 +29,73 @@ clearButton.addEventListener("click", clear);
 
 delButton.addEventListener("click", deleteLastCharacter);
 
+document.addEventListener("keyup", keyboardHandler);
+
+// -----------------------keyboard handler -----------------------
+
+function keyboardHandler(e){
+
+  console.log(e.key);
+
+  const releasedKey = e.key;
+
+  switch(releasedKey){
+    case "1": 
+      populate("1");
+      break;
+    case "2":
+      populate("2");
+      break;
+    case "3":
+      populate("3");
+      break;
+    case "4":
+      populate("4");
+      break;
+    case "5": 
+      populate("5");
+      break;
+    case "6":
+      populate("6");
+      break;
+    case "7":
+      populate("7");
+      break;
+    case "8":
+      populate("8");
+      break;
+    case "9":
+      populate("9");
+      break;
+    case "Delete":
+    case "Backspace":
+      deleteLastCharacter();
+      break;
+    case "+":
+      setOperation("+");
+      break;
+    case "-":
+      setOperation("-");
+      break;
+    case "*":
+      setOperation("*");
+      break;
+    case "/":
+      setOperation("/");
+      break;
+    case "Enter":
+    case "=":
+      evaluate();
+    default:
+      break;
+  }
+}
+
 percentageButton.addEventListener("click", percentage);
 
 negateButton.addEventListener("click", negate);
+
+
 
 // -----------------------arithmatic operations-------------------
 
