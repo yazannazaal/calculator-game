@@ -105,7 +105,7 @@ function deleteLastCharacter() {
 
 function percentage() {
   const currentValue = resultDisplay.value;
-  const result = currentValue/100;
+  const result = currentValue / 100;
   resultDisplay.value = result;
 }
 
