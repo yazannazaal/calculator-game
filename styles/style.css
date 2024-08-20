@@ -22,7 +22,7 @@ input[type="number"] {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100vw;
+    width: 99vw;
     height:80vh;
 }
 
@@ -34,6 +34,7 @@ input[type="number"] {
     width: 20rem;
     height: 34rem;
     padding: 2rem;
+    margin-top: 6rem;
     background-color: var(--bg);
     border: 6px solid var(--dark);
     border-radius: 1rem;

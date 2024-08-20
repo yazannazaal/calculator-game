@@ -125,7 +125,8 @@ const operate = (operator, num1, num2) => {
 
 function populate(value) {
   if (resultDisplay.value === "0" || shouldResetDisplay) resetDisplay();
-  resultDisplay.value += value;
+  else if(value ==="." && resultDisplay.value.includes(".")) return;
+    resultDisplay.value += value;
 }
 
 function resetDisplay() {
