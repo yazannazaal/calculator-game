@@ -1,53 +1,96 @@
-const number_buttons = document.querySelectorAll(".number_button");
-const numbers_array = [...number_buttons];
-const divid_op = document.querySelector('#divide');
-const multiply_op = document.querySelector('#multiply')
-const sub_op = document.querySelector('#subtract')
-const add_op = document.querySelector('#add')
-const equals_op = document.querySelector('#equals')
-const result_display =document.getElementById("result_display")
+const numberButtons = document.querySelectorAll(".number_button");
+const operationButtons = document.querySelectorAll(".operation_button");
+const equalsButton = document.getElementById("equals");
+const clearButton = document.getElementById("all_clear");
+const resultDisplay = document.getElementById("result_display");
+const delButton = document.getElementById("del");
+let firstNumber = "";
+let secondNumber = "";
+let currentOperation = null;
+let shouldResetDisplay = false;
 
-// multiplication function
-const multiply = function(num1, num2) {
-    let result = num1 * num2
-  return result;
-}
-// suntraction function
-const subtract = function (num1, num2) {
-    let result = num1 - num2    
-  return result;
-}
-//addtion function
-const add = function(num1,num2){
-    let result = num1+num2;
-    return result
-}
-//division function
-const div = function(num1,num2){
-    let result = num1/num2;
-    return result
-}
-const oprate = function(num1,num2,op){
-    if(op===add_op){
-        return add(num1,num2);
-    } else if(op===divid_op){
-        return div(num1,num2);
-    } else if(op===sub_op){
-        return subtract(num1,num2);
-    }else if(op===multiply_op){
-        return multiply(num1,num2);
-    }
-}
-// population function
-let displayValue = "";
+// ----------------------------events handling-------------------------------------
+
+numberButtons.forEach((button) => {
+  button.addEventListener("click", () => populate(button.textContent.trim()));
+});
+
+operationButtons.forEach((button) => {
+  button.addEventListener("click", () =>
+    setOperation(button.textContent.trim())
+  );
+});
+
+equalsButton.addEventListener("click", evaluate);
+
+clearButton.addEventListener("click", clear);
+
+delButton.addEventListener("click", deleteLastCharacter);
+
+// -----------------------arithmatic operations-------------------
+
+const multiply = (num1, num2) => num1 * num2;
+
+const subtract = (num1, num2) => num1 - num2;
+
+const add = (num1, num2) => num1 + num2;
+
+const divide = (num1, num2) => (num2 === 0 ? "Error" : num1 / num2);
+
+const operate = (operator, num1, num2) => {
+  switch (operator) {
+    case "+":
+      return add(num1, num2);
+    case "-":
+      return subtract(num1, num2);
+    case "*":
+      return multiply(num1, num2);
+    case "/":
+      return divide(num1, num2);
+    default:
+      return null;
+  }
+};
 
 function populate(value) {
-  displayValue += value;
-  result_display.value = displayValue;
+  if (resultDisplay.value === "0" || shouldResetDisplay) resetDisplay();
+  resultDisplay.value += value;
 }
 
-numbers_array.forEach((button) => {
-  button.addEventListener("click", () => {
-    populate(button.textContent.trim());
-  });
-});
+function resetDisplay() {
+  resultDisplay.value = "";
+  shouldResetDisplay = false;
+}
+
+function setOperation(operation) {
+  if (currentOperation !== null) evaluate();
+  firstNumber = resultDisplay.value;
+  currentOperation = operation;
+  shouldResetDisplay = true;
+}
+
+function evaluate() {
+  if (currentOperation === null || shouldResetDisplay) return;
+  secondNumber = resultDisplay.value;
+  resultDisplay.value = operate(
+    currentOperation,
+    parseFloat(firstNumber),
+    parseFloat(secondNumber)
+  );
+  currentOperation = null;
+}
+
+function clear() {
+  resultDisplay.value = "0";
+  firstNumber = "";
+  secondNumber = "";
+  currentOperation = null;
+}
+
+function deleteLastCharacter() {
+  const currentValue = resultDisplay.value;
+
+  if (currentValue.length > 0) {
+    resultDisplay.value = currentValue.slice(0, -1);
+  }
+}
