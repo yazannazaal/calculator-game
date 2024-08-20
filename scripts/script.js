@@ -4,6 +4,8 @@ const equalsButton = document.getElementById("equals");
 const clearButton = document.getElementById("all_clear");
 const resultDisplay = document.getElementById("result_display");
 const delButton = document.getElementById("del");
+const percentageButton = document.getElementById("percentage");
+const negateButton = document.getElementById("negate");
 let firstNumber = "";
 let secondNumber = "";
 let currentOperation = null;
@@ -26,6 +28,10 @@ equalsButton.addEventListener("click", evaluate);
 clearButton.addEventListener("click", clear);
 
 delButton.addEventListener("click", deleteLastCharacter);
+
+percentageButton.addEventListener("click", percentage);
+
+negateButton.addEventListener("click", negate);
 
 // -----------------------arithmatic operations-------------------
 
@@ -93,4 +99,18 @@ function deleteLastCharacter() {
   if (currentValue.length > 0) {
     resultDisplay.value = currentValue.slice(0, -1);
   }
+}
+
+// --------------------single number operations ------------
+
+function percentage() {
+  const currentValue = resultDisplay.value;
+  const result = currentValue/100;
+  resultDisplay.value = result;
+}
+
+function negate() {
+  const currentValue = resultDisplay.value;
+  const result = -currentValue;
+  resultDisplay.value = result;
 }
