@@ -4,6 +4,7 @@ const equalsButton = document.getElementById("equals");
 const clearButton = document.getElementById("all_clear");
 const resultDisplay = document.getElementById("result_display");
 const delButton = document.getElementById("del");
+const dot = document.getElementById("n.");
 let firstNumber = "";
 let secondNumber = "";
 let currentOperation = null;
@@ -22,6 +23,7 @@ operationButtons.forEach((button) => {
 });
 
 equalsButton.addEventListener("click", evaluate);
+dot.addEventListener("click", evaluate);
 
 clearButton.addEventListener("click", clear);
 
@@ -53,9 +55,22 @@ const operate = (operator, num1, num2) => {
 };
 
 function populate(value) {
+  // Check if the user is trying to add a second decimal point
+  if (value === "." && resultDisplay.value.includes(".")) return;
+
+  // If the display is '0' or needs resetting, reset it
   if (resultDisplay.value === "0" || shouldResetDisplay) resetDisplay();
-  resultDisplay.value += value;
+
+  // If the user starts with a dot, prepend a '0'
+  if (value === "." && resultDisplay.value === "") {
+    resultDisplay.value = "0."; // Automatically add '0' before the dot
+  
+  } else {
+    // Append the value normally
+    resultDisplay.value += value;
+  }
 }
+
 
 function resetDisplay() {
   resultDisplay.value = "";
@@ -70,8 +85,11 @@ function setOperation(operation) {
 }
 
 function evaluate() {
-  if (currentOperation === null || shouldResetDisplay) return;
+  // Check if an operator is selected and both numbers are provided
+  if (currentOperation === null || shouldResetDisplay || firstNumber === "") return;
   secondNumber = resultDisplay.value;
+  // If no second number is provided, exit the function
+  if(secondNumber === "") return;
   resultDisplay.value = operate(
     currentOperation,
     parseFloat(firstNumber),
