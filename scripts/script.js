@@ -158,11 +158,17 @@ function clear() {
 }
 
 function deleteLastCharacter() {
-  const currentValue = resultDisplay.value;
+  const currentValue = resultDisplay.value
+  const check_position = currentValue.length - 2;
 
   if (currentValue.length > 0) {
-    resultDisplay.value = currentValue.slice(0, -1);
+    if (currentValue.charAt(check_position) === "."){
+      resultDisplay.value = currentValue.slice(0, -2);
+    } else {
+      resultDisplay.value = currentValue.slice(0, -1);
+    }
   }
+  
 }
 
 // --------------------single number operations ------------
