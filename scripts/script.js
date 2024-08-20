@@ -9,6 +9,7 @@ const negateButton = document.getElementById("negate");
 let firstNumber = "";
 let secondNumber = "";
 let currentOperation = null;
+let evaluationCount = 0;
 let shouldResetDisplay = false;
 
 // ----------------------------events handling-------------------------------------
@@ -133,10 +134,12 @@ function resetDisplay() {
 }
 
 function setOperation(operation) {
-  if (currentOperation !== null) evaluate();
-  firstNumber = resultDisplay.value;
+
+  if (currentOperation !== null  &&  currentOperation !== "=") evaluate();
+  firstNumber = resultDisplay.value
   currentOperation = operation;
   shouldResetDisplay = true;
+  console.log(typeof firstNumber, "1st: ", firstNumber, "2nd:", secondNumber, "operator:", operation, "reset: ?", shouldResetDisplay);
 }
 
 function evaluate() {
@@ -148,6 +151,7 @@ function evaluate() {
     parseFloat(secondNumber)
   );
   currentOperation = null;
+  evaluationCount++;
 }
 
 function clear() {
@@ -168,7 +172,7 @@ function deleteLastCharacter() {
       resultDisplay.value = currentValue.slice(0, -1);
     }
   }
-  
+
 }
 
 // --------------------single number operations ------------
