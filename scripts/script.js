@@ -33,14 +33,13 @@ document.addEventListener("keyup", keyboardHandler);
 
 // -----------------------keyboard handler -----------------------
 
-function keyboardHandler(e){
-
+function keyboardHandler(e) {
   console.log(e.key);
 
   const releasedKey = e.key;
 
-  switch(releasedKey){
-    case "1": 
+  switch (releasedKey) {
+    case "1":
       populate("1");
       break;
     case "2":
@@ -52,7 +51,7 @@ function keyboardHandler(e){
     case "4":
       populate("4");
       break;
-    case "5": 
+    case "5":
       populate("5");
       break;
     case "6":
@@ -95,8 +94,6 @@ percentageButton.addEventListener("click", percentage);
 
 negateButton.addEventListener("click", negate);
 
-
-
 // -----------------------arithmatic operations-------------------
 
 const multiply = (num1, num2) => num1 * num2;
@@ -133,7 +130,7 @@ function resetDisplay() {
 }
 
 function setOperation(operation) {
-  if (currentOperation !== null) evaluate();
+  if (currentOperation !== null && currentOperation !== "=") evaluate();
   firstNumber = resultDisplay.value;
   currentOperation = operation;
   shouldResetDisplay = true;
