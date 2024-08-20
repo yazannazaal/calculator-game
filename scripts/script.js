@@ -121,6 +121,7 @@ const operate = (operator, num1, num2) => {
 
 function populate(value) {
   if (resultDisplay.value === "0" || shouldResetDisplay) resetDisplay();
+  else if (value === "." && resultDisplay.value.includes(".")) return;
   resultDisplay.value += value;
 }
 
@@ -155,17 +156,16 @@ function clear() {
 }
 
 function deleteLastCharacter() {
-  const currentValue = resultDisplay.value
+  const currentValue = resultDisplay.value;
   const check_position = currentValue.length - 2;
 
   if (currentValue.length > 0) {
-    if (currentValue.charAt(check_position) === "."){
+    if (currentValue.charAt(check_position) === ".") {
       resultDisplay.value = currentValue.slice(0, -2);
     } else {
       resultDisplay.value = currentValue.slice(0, -1);
     }
   }
-  
 }
 
 // --------------------single number operations ------------
