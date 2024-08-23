@@ -28,3 +28,6 @@ If you wish to work on the files for this project you can clone it onto your mac
 
    ```bash
    git clone https://github.com/your-username/calculator-game.git
+
+ you can view the page using this link: 
+[calculator-game](https://yazannazaal.github.io/calculator-game/)
