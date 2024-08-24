@@ -33,14 +33,16 @@ document.addEventListener("keyup", keyboardHandler);
 
 // -----------------------keyboard handler -----------------------
 
-function keyboardHandler(e){
-
+function keyboardHandler(e) {
   console.log(e.key);
 
   const releasedKey = e.key;
 
-  switch(releasedKey){
-    case "1": 
+  switch (releasedKey) {
+    case "0":
+      populate("0");
+      break;
+    case "1":
       populate("1");
       break;
     case "2":
@@ -52,7 +54,7 @@ function keyboardHandler(e){
     case "4":
       populate("4");
       break;
-    case "5": 
+    case "5":
       populate("5");
       break;
     case "6":
@@ -95,8 +97,6 @@ percentageButton.addEventListener("click", percentage);
 
 negateButton.addEventListener("click", negate);
 
-
-
 // -----------------------arithmatic operations-------------------
 
 const multiply = (num1, num2) => num1 * num2;
@@ -124,8 +124,8 @@ const operate = (operator, num1, num2) => {
 
 function populate(value) {
   if (resultDisplay.value === "0" || shouldResetDisplay) resetDisplay();
-  else if(value ==="." && resultDisplay.value.includes(".")) return;
-    resultDisplay.value += value;
+  else if (value === "." && resultDisplay.value.includes(".")) return;
+  resultDisplay.value += value;
 }
 
 function resetDisplay() {
@@ -134,9 +134,8 @@ function resetDisplay() {
 }
 
 function setOperation(operation) {
-
-  if (currentOperation !== null  &&  currentOperation !== "=") evaluate();
-  firstNumber = resultDisplay.value
+  if (currentOperation !== null && currentOperation !== "=") evaluate();
+  firstNumber = resultDisplay.value;
   currentOperation = operation;
   shouldResetDisplay = true;
 }
@@ -160,24 +159,23 @@ function clear() {
 }
 
 function deleteLastCharacter() {
-  const currentValue = resultDisplay.value
+  const currentValue = resultDisplay.value;
   const check_position = currentValue.length - 2;
 
   if (currentValue.length > 0) {
-    if (currentValue.charAt(check_position) === "."){
+    if (currentValue.charAt(check_position) === ".") {
       resultDisplay.value = currentValue.slice(0, -2);
     } else {
       resultDisplay.value = currentValue.slice(0, -1);
     }
   }
-
 }
 
 // --------------------single number operations ------------
 
 function percentage() {
   const currentValue = resultDisplay.value;
-  const result = currentValue/100;
+  const result = currentValue / 100;
   resultDisplay.value = result;
 }
 
