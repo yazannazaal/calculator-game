@@ -39,6 +39,9 @@ function keyboardHandler(e) {
   const releasedKey = e.key;
 
   switch (releasedKey) {
+    case "0":
+      populate("0");
+      break;
     case "1":
       populate("1");
       break;
